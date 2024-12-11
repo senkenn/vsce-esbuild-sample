@@ -17,6 +17,7 @@
 	],
 	"activationEvents": [],
 	"main": "./dist/desktop/extension.js",
+	"browser": "./dist/web/extension.js",
 	"contributes": {
 		"commands": [
 			{
@@ -27,7 +28,9 @@
 	},
 	"scripts": {
 		"compile:desktop": "esbuild --bundle --outdir=dist/desktop --external:vscode --format=cjs src/extension.ts",
-		"watch:esbuild": "pnpm run compile:desktop --watch"
+		"compile:web": "esbuild --bundle --outdir=dist/web --external:vscode --format=cjs src/extension.ts",
+		"watch:esbuild": "pnpm run compile:desktop --watch",
+		"serve": "pnpm dlx serve --cors -l 5000 --ssl-cert $HOME/certs/localhost.pem --ssl-key $HOME/certs/localhost-key.pem"
 	},
 	"devDependencies": {
 		"@types/mocha": "^10.0.6",
