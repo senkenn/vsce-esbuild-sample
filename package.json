@@ -1,0 +1,39 @@
+{
+	"name": "esbuild-sample",
+	"displayName": "esbuild-sample",
+	"description": "",
+	"version": "0.0.1",
+	"publisher": "vscode-samples",
+	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Microsoft/vscode-extension-samples"
+	},
+	"engines": {
+		"vscode": "^1.74.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [],
+	"main": "./dist/desktop/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "esbuild-sample.hello-esbuild",
+				"title": "Hello esbuild"
+			}
+		]
+	},
+	"scripts": {
+		"compile:desktop": "esbuild --bundle --outdir=dist/desktop --external:vscode --format=cjs src/extension.ts",
+		"watch:esbuild": "pnpm run compile:desktop --watch"
+	},
+	"devDependencies": {
+		"@types/mocha": "^10.0.6",
+		"@types/node": "^20",
+		"@types/vscode": "^1.73.0",
+		"esbuild": "^0.24.0",
+		"typescript": "^5.7.2"
+	}
+}
